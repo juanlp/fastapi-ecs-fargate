@@ -42,3 +42,7 @@ jobs:
       - name: "Run tests"
         run: |
           pipenv run pytest --cov-report=term-missing --cov=app tests/ --color=yes
+
+      - name: "Run linter"
+        run: |
+          pipenv run pylint app/ --exit-zero
