@@ -60,3 +60,18 @@ jobs:
         with:
           dockerfile: Dockerfile
           ignore: SC1091
+
+  terraform:
+    name: "Terraform CI"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout Code"
+        uses: "actions/checkout@v2"
+
+      - name: "Setup terraform"
+        uses: hashicorp/setup-terraform@v1
+
+      - name: "Terraform fmt"
+        id: fmt
+        run: terraform fmt -check -recursive iac/
+        continue-on-error: true
