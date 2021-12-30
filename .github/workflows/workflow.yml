@@ -12,8 +12,8 @@ name: "workflow"
       - main
 
 jobs:
-  integration:
-    name: "CI"
+  python:
+    name: "Python CI"
     runs-on: "ubuntu-latest"
     steps:
       - name: "Checkout Code"
@@ -46,3 +46,15 @@ jobs:
       - name: "Run linter"
         run: |
           pipenv run pylint app/ --exit-zero
+
+  docker:
+    name: "Docker CI"
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "Checkout Code"
+        uses: "actions/checkout@v2"
+
+      - name: "Run linter"
+        uses: hadolint/hadolint-action@v1.6.0
+        with:
+          dockerfile: Dockerfile
