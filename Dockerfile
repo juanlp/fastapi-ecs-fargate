@@ -6,7 +6,7 @@ WORKDIR /app
 RUN python -m venv /app/venv \
     && . /app/venv/bin/activate \
     && pip install --no-cache-dir -U pip==21.1.3 \
-    && pip install --no-cahce-dir -r requirements.txt
+    && pip install --no-cache-dir -r requirements.txt
 
 COPY ./app/ /app/
 
